@@ -6,11 +6,12 @@ import os
 import string
 
 # db stuff
+load_dotenv()
 db = mysql.connector.connect(
-    host= "na05-sql.pebblehost.com",
-    user= "customer_179919_collatzdb",
-    password= "s6jYWqX1$iu0HiHgXMDd",
-    database= "customer_179919_collatzdb",
+    host= os.getenv("HOST"),
+    user= os.getenv("USER"),
+    password= os.getenv("PASSWORD"),
+    database= os.getenv("DATABASE"),
 )
 cursor = db.cursor(buffered=True)
 print("Connected to DB")
