@@ -6,6 +6,7 @@ import os
 import string
 from gui import testerID
 import json
+import mysql.connector.locales.eng
 
 # db stuff
 load_dotenv()
