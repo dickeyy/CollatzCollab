@@ -4,8 +4,8 @@
 block_cipher = None
 
 
-a = Analysis(['CollatzCollab.pyw'],
-             pathex=['C:\\.Code\\CollatzConjecture\\CollatzConjecture'],
+a = Analysis(['collatzcollab.pyw'],
+             pathex=['C:\\.Code\\DoxBot\\Python\\CollatzCollab\\Dist'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -26,7 +26,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,  
           [],
-          name='CollatzCollab',
+          name='collatzcollab',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
