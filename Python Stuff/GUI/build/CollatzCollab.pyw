@@ -4,6 +4,8 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 import string
+from gui import testerID
+import json
 
 # db stuff
 load_dotenv()
@@ -17,7 +19,7 @@ cursor = db.cursor(buffered=True)
 print("Connected to DB")
 
 # control the min and max values
-rangeMax = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+rangeMax = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
 rangeMin = 2
 
 # set inital value
@@ -35,8 +37,18 @@ while True:
         testIDLet1 = r.choice(string.ascii_letters)
         testIDLet2 = r.choice(string.ascii_letters)
         testID = str(f"{testIDLet2}{testIDNum}{testIDLet1}")
-        cursor.execute(f"INSERT INTO `numsTested` (`testID`, `status`, `testerID`, `date`) VALUES ('{testID}', 'Pending', '1', current_timestamp())")
+        cursor.execute(f"INSERT INTO `numsTested` (`testID`, `status`, `testerID`, `date`) VALUES ('{testID}', 'Pending', '{testerID}', current_timestamp())")
         db.commit()
+
+        jsonData = {}
+        jsonData['Test Info'] = []
+        jsonData["Test Info"].append({
+            'testID': testID,
+            'testerID': testerID,
+            'number': num,
+        })
+        with open('tests.json', 'w') as outfile:
+            json.dump(jsonData, outfile)
 
         time.sleep(2)
 

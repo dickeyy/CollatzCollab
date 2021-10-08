@@ -12,3 +12,9 @@
   font-size: 1.875rem;
   margin: 49px auto 60px;
 }
+
+.u-section-1 .u-icon-1 {
+  color: rgb(209, 215, 224) !important;
+  font-size: 0.9em;
+  vertical-align: 1px;
+}

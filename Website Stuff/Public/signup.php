@@ -109,7 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="keywords" content="Collatz, collab, collatz colab, math, program">
     <meta name="description" content="The collaborative project to solve the hardest math problem ever.​">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>signup</title>
+    <title>Signup - Collatz</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="signup-style.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
