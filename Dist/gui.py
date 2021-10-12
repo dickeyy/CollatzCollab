@@ -15,7 +15,6 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox
 
 
 # db stuff
-# db stuff
 db = mysql.connector.connect(
     host= "na05-sql.pebblehost.com",
     user= "customer_179919_collatzdb",
@@ -24,18 +23,7 @@ db = mysql.connector.connect(
 )
 cursor = db.cursor(buffered=True)
 
-
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path("./assets")
-
-
-def relative_to_assets(path: str) -> Path:
-    return ASSETS_PATH / Path(path)
-
-
 window = Tk()
-logo = PhotoImage(file=ASSETS_PATH / "collatzLogo.png")
-window.call('wm', 'iconphoto', window._w, logo)
 window.title("Collatz Collab Setup")
 
 window.geometry("569x640")
@@ -79,19 +67,13 @@ canvas.create_text(
     font=("Roboto Bold", 64 * -1)
 )
 
-entry_image_1 = PhotoImage(
-    file=relative_to_assets("entry_1.png"))
-entry_bg_1 = canvas.create_image(
-    285.0,
-    270.5,
-    image=entry_image_1
-)
 entry_1 = Entry(
-    bd=0,
+    bd=2,
     bg="#2D283E",
     highlightthickness=0,
-    font=("Roboto Bold", 48 * -1),
+    font=("Roboto Bold", 44 * -1),
     fg="#D1D7E0",
+
 )
 entry_1.place(
     x=103.0,
@@ -111,6 +93,7 @@ canvas.create_text(
 
 import os
 
+
 def button_1_clicked():
     emailEntered = entry_1.get()
     cursor.execute(f"SELECT id FROM users WHERE email = '{emailEntered}'")
@@ -121,17 +104,21 @@ def button_1_clicked():
     
     
 
-    messagebox.showinfo("Success!", "Login successful. Thank you for using Collatz Collab. The program has started, for more info on the program and how to stop it, visit https://collatzcollab.com/download.\nYou can now close this app.")
+    msg = messagebox.showinfo("Success!", "Login successful. Thank you for using Collatz Collab. The program has started, for more info on the program and how to stop it, visit https://collatzcollab.com/download.\nYou can now close this app.")
+    if msg == "ok":
+        window.destroy()
 
 
-button_image_1 = PhotoImage(
-    file=relative_to_assets("button_1.png"))
+
 button_1 = Button(
-    image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
     command=button_1_clicked,
-    relief="flat"
+    relief="flat",
+    text="Sign In",
+    bg="#2D283E",
+    fg="#802BB1",
+    font=("Roboto Bold", 24 * -1)
 )
 button_1.place(
     x=178.0,
@@ -155,14 +142,15 @@ def button_2_clicked():
     )
     webbrowser.open_new_tab(signUpLink)
 
-button_image_2 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
 button_2 = Button(
-    image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
     command=button_2_clicked,
-    relief="flat"
+    relief="flat",
+    text="Sign Up",
+    bg="#2D283E",
+    fg="#802BB1",
+    font=("Roboto Bold", 20 * -1)
 )
 button_2.bind('<Button-2>', button_2_clicked)
 button_2.place(
